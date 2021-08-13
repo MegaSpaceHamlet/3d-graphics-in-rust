@@ -86,8 +86,63 @@ pub mod canvas {
             self.img.save(filename) 
         }
     }
+
+    /// Point in a 3-d space (x, y, z)
+    /// TODO: Create macro rule for defining Point
+    pub struct Point {
+        pub x: i64,
+        pub y: i64,
+        pub z: i64
+    }
+
+    impl Point {
+
+        /// Creates new Point at (0, 0, 0)
+        pub fn new() -> Point {
+            Point {
+                x: 0,
+                y: 0,
+                z: 0
+            }
+        }
+
+        /// Create new Point at desired location using 3 separate values
+        /// TODO: Make function capable of receiving any type that implements 'Primitive'. https://docs.rs/image/0.18.0/image/trait.Primitive.html
+        /// 
+        /// # Arguements
+        /// 
+        /// * x - point on x-axis
+        /// * y - point on y-axis
+        /// * z - point on y-axis 
+        pub fn from(x: i64, y: i64, z: i64) -> Point {
+            Point {
+                x,
+                y, 
+                z
+            }
+        }
+
+
+        /// Create new Point from array
+        /// 
+        /// # Arguements
+        /// 
+        /// * coordinates - array holding 3 values representing, x, y, and z
+        pub fn from_array(coordinates: [i64; 3]) -> Point {
+            Point {
+                x: coordinates[0],
+                y: coordinates[1],
+                z: coordinates[2]
+            }
+        }
+
+        /// Return coordinates as array in form (x, y, z)
+        pub fn coordinates(&self) -> [i64; 3] {
+            [self.x, self.y, self.z]
+        }
+    }
 }
 
 pub mod painting {
-
+    
 }
